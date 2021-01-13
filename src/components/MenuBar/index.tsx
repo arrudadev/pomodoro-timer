@@ -23,8 +23,6 @@ const MenuBar: React.FC<MenuBarProps> = ({ activePage }) => {
       maxHeight="100vh"
       overflowY="auto"
       display={['none', 'flex']}
-      borderRightColor="#2F3336"
-      borderRightWidth="1px"
     >
       <Image src="/logo.png" marginBottom="20px" alt="Pomodoro Timer" />
 
