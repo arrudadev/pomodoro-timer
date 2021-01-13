@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Flex } from '@chakra-ui/react';
 
+import Main from '../Main';
 import MenuBar from '../MenuBar';
 
 interface LayoutProps {
@@ -12,7 +13,7 @@ const Layout: React.FC<LayoutProps> = ({ children, activePage }) => {
   return (
     <Flex height="100%" width="100%">
       <MenuBar activePage={activePage} />
-      {children}
+      <Main>{children}</Main>
     </Flex>
   );
 };

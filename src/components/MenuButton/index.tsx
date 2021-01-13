@@ -5,7 +5,7 @@ import { Flex } from '@chakra-ui/react';
 const MenuButton: React.FC = ({ children }) => {
   return (
     <Flex
-      Flexshrink="0"
+      flexShrink={0}
       alignItems="center"
       justifyContent="center"
       padding="8.25px 0"

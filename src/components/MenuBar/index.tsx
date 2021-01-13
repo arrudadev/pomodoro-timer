@@ -13,6 +13,7 @@ interface MenuBarProps {
 const MenuBar: React.FC<MenuBarProps> = ({ activePage }) => {
   return (
     <Flex
+      as="nav"
       flexDir="column"
       position="sticky"
       top="0"
