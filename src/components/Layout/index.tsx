@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Flex, Box } from '@chakra-ui/react';
 
+import FAQ from '../FAQ';
 import Header from '../Header';
 import Main from '../Main';
 import MenuBar from '../MenuBar';
@@ -62,6 +63,8 @@ const Layout: React.FC<LayoutProps> = ({ children, activePage }) => {
           trabalho. Ou seja, aproveite o momento para tomar café, andar um
           pouco, esticar o corpo… ou, simplesmente, fazer nada e descansar.
         </Section>
+
+        <FAQ />
       </Main>
     </Flex>
   );
