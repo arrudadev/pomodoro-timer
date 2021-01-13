@@ -2,16 +2,20 @@ import React from 'react';
 
 import Head from 'next/head';
 
+import Layout from '../components/Layout';
+
 const Home: React.FC = () => {
   return (
-    <div>
+    <>
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Pomodoro Timer</title>
+        <link rel="icon" href="/favicon.png" />
       </Head>
 
-      <h1>Hello World</h1>
-    </div>
+      <Layout activePage="Timer">
+        <h1>Hello World</h1>
+      </Layout>
+    </>
   );
 };
 
