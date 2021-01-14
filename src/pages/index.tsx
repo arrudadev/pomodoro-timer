@@ -36,7 +36,12 @@ const Home: React.FC = () => {
           alignItems="center"
           justifyContent="center"
         >
-          <Flex alignItems="center" justifyContent="center" flexWrap="wrap">
+          <Flex
+            alignItems="center"
+            justifyContent="center"
+            flexWrap="wrap"
+            marginTop="30px"
+          >
             <Button
               leftIcon={<FaLaptop />}
               variant="ghost"
