@@ -1,9 +1,10 @@
 import React from 'react';
 import { FaTasks } from 'react-icons/fa';
-import { MdSettings, MdSchedule } from 'react-icons/md';
+import { MdSchedule } from 'react-icons/md';
 
 import { Flex, Image, Icon, Tooltip } from '@chakra-ui/react';
 
+import ButtonSettings from '../ButtonSettings';
 import MenuButton from '../MenuButton';
 
 interface MenuBarProps {
@@ -57,13 +58,7 @@ const MenuBar: React.FC<MenuBarProps> = ({ activePage }) => {
           placement="right"
           shouldWrapChildren
         >
-          <Icon
-            as={MdSettings}
-            width="30px"
-            height="30px"
-            color={activePage === 'Settings' ? '#0098f7' : '#a7abae'}
-            _hover={{ color: '#0098f7' }}
-          />
+          <ButtonSettings />
         </Tooltip>
       </MenuButton>
     </Flex>
