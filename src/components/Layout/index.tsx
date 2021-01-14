@@ -3,6 +3,7 @@ import React from 'react';
 import { Flex, Box } from '@chakra-ui/react';
 
 import FAQ from '../FAQ';
+import Footer from '../Footer';
 import Header from '../Header';
 import Main from '../Main';
 import MenuBar from '../MenuBar';
@@ -65,6 +66,8 @@ const Layout: React.FC<LayoutProps> = ({ children, activePage }) => {
         </Section>
 
         <FAQ />
+
+        <Footer />
       </Main>
     </Flex>
   );
