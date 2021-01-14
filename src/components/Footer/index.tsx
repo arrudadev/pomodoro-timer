@@ -11,6 +11,7 @@ const Footer: React.FC = () => {
       minHeight="6.4rem"
       textAlign="center"
       position="relative"
+      marginTop="50px"
     >
       <Flex
         flexDir="column"
