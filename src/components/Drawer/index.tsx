@@ -1,7 +1,5 @@
 import React from 'react';
-import { FaGithub, FaTasks } from 'react-icons/fa';
-import { IconType } from 'react-icons/lib';
-import { MdSettings } from 'react-icons/md';
+import { FaGithub } from 'react-icons/fa';
 
 import {
   Drawer as DrawerChakra,
@@ -12,45 +10,17 @@ import {
   Icon,
   DrawerHeader,
   Image,
-  Text,
   Grid,
-  useDisclosure,
   Link,
+  Text,
 } from '@chakra-ui/react';
 
-import ModalSettings from '../ModalSettings';
+import ButtonSettings from '../ButtonSettings';
 
 interface DrawerProps {
   onClose: () => void;
   isOpen: boolean;
 }
-
-interface DrawerItemProps {
-  icon: IconType;
-  text: string;
-}
-
-const DrawerItem: React.FC<DrawerItemProps> = ({ icon, text }) => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-
-  return (
-    <>
-      <Icon
-        as={icon}
-        width="30px"
-        height="30px"
-        cursor="pointer"
-        color="black"
-        onClick={onOpen}
-      />
-      <Text alignSelf="center" onClick={onOpen}>
-        {text}
-      </Text>
-
-      <ModalSettings isOpen={isOpen} onClose={onClose} />
-    </>
-  );
-};
 
 const Drawer: React.FC<DrawerProps> = ({ isOpen, onClose }) => {
   return (
@@ -69,9 +39,7 @@ const Drawer: React.FC<DrawerProps> = ({ isOpen, onClose }) => {
 
           <DrawerBody color="black">
             <Grid templateColumns="50px 1fr" rowGap="20px">
-              <DrawerItem icon={FaTasks} text="Lista de Tarefas" />
-
-              <DrawerItem icon={MdSettings} text="Configurações" />
+              <ButtonSettings displayText />
 
               <Link
                 href="https://github.com/monteiro-alexandre/pomodoro-timer"
@@ -83,8 +51,14 @@ const Drawer: React.FC<DrawerProps> = ({ isOpen, onClose }) => {
                   height="30px"
                   cursor="pointer"
                   color="black"
-                  title="Pomodoro Timer GitHub"
                 />
+              </Link>
+
+              <Link
+                href="https://github.com/monteiro-alexandre/pomodoro-timer"
+                isExternal
+              >
+                <Text alignSelf="center">Repositorio do GitHub</Text>
               </Link>
             </Grid>
           </DrawerBody>

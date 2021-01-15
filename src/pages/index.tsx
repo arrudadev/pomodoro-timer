@@ -14,8 +14,8 @@ import {
   Flex,
   CircularProgress,
   CircularProgressLabel,
-  Select,
   Button,
+  Input,
 } from '@chakra-ui/react';
 
 import Layout from '../components/Layout';
@@ -28,7 +28,7 @@ const Home: React.FC = () => {
         <link rel="icon" href="/favicon.png" />
       </Head>
 
-      <Layout activePage="Timer">
+      <Layout>
         <Flex
           flexDir="column"
           height="100%"
@@ -88,9 +88,9 @@ const Home: React.FC = () => {
               justifyContent="center"
               width={['100%', '100%', '50%']}
             >
-              <Select
-                placeholder="Selecione uma Tarefa"
-                size="md"
+              <Input
+                variant="outline"
+                placeholder="Digite uma Tarefa"
                 maxWidth="450px"
               />
 

@@ -9,17 +9,15 @@ import Main from '../Main';
 import MenuBar from '../MenuBar';
 import Section from '../Section';
 
-interface LayoutProps {
-  activePage: string;
-}
-
-const Layout: React.FC<LayoutProps> = ({ children, activePage }) => {
+const Layout: React.FC = ({ children }) => {
   return (
     <Flex height="100%" width="100%">
-      <MenuBar activePage={activePage} />
+      <MenuBar />
       <Main>
         <Header />
+
         <Box minHeight="max(calc(100vh - 90px), 450px)">{children}</Box>
+
         <Section
           title="Técnica Pomodoro Timer"
           subtitle="O que é a Técnica do Pomodoro"

@@ -1,11 +1,15 @@
 import React from 'react';
 import { MdSettings } from 'react-icons/md';
 
-import { Icon, useDisclosure } from '@chakra-ui/react';
+import { Icon, Text, useDisclosure } from '@chakra-ui/react';
 
 import ModalSettings from '../ModalSettings';
 
-const ButtonSettings: React.FC = () => {
+interface ButtonSettingsProps {
+  displayText?: boolean;
+}
+
+const ButtonSettings: React.FC<ButtonSettingsProps> = ({ displayText }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -17,6 +21,12 @@ const ButtonSettings: React.FC = () => {
         _hover={{ color: '#0098f7' }}
         onClick={onOpen}
       />
+
+      {displayText && (
+        <Text alignSelf="center" onClick={onOpen}>
+          Configurações
+        </Text>
+      )}
 
       <ModalSettings isOpen={isOpen} onClose={onClose} />
     </>

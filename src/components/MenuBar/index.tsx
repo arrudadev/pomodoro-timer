@@ -1,17 +1,13 @@
 import React from 'react';
-import { FaTasks } from 'react-icons/fa';
+import { FaGithub } from 'react-icons/fa';
 import { MdSchedule } from 'react-icons/md';
 
-import { Flex, Image, Icon, Tooltip } from '@chakra-ui/react';
+import { Flex, Image, Icon, Tooltip, Link } from '@chakra-ui/react';
 
 import ButtonSettings from '../ButtonSettings';
 import MenuButton from '../MenuButton';
 
-interface MenuBarProps {
-  activePage: string;
-}
-
-const MenuBar: React.FC<MenuBarProps> = ({ activePage }) => {
+const MenuBar: React.FC = () => {
   return (
     <Flex
       as="nav"
@@ -29,25 +25,7 @@ const MenuBar: React.FC<MenuBarProps> = ({ activePage }) => {
 
       <MenuButton>
         <Tooltip label="Timer" hasArrow placement="right" shouldWrapChildren>
-          <Icon
-            as={MdSchedule}
-            width="30px"
-            height="30px"
-            color={activePage === 'Timer' ? '#0098f7' : '#a7abae'}
-            _hover={{ color: '#0098f7' }}
-          />
-        </Tooltip>
-      </MenuButton>
-
-      <MenuButton>
-        <Tooltip label="Tarefas" hasArrow placement="right" shouldWrapChildren>
-          <Icon
-            as={FaTasks}
-            width="30px"
-            height="30px"
-            color={activePage === 'Tasks' ? '#0098f7' : '#a7abae'}
-            _hover={{ color: '#0098f7' }}
-          />
+          <Icon as={MdSchedule} width="30px" height="30px" color="#0098f7" />
         </Tooltip>
       </MenuButton>
 
@@ -59,6 +37,28 @@ const MenuBar: React.FC<MenuBarProps> = ({ activePage }) => {
           shouldWrapChildren
         >
           <ButtonSettings />
+        </Tooltip>
+      </MenuButton>
+
+      <MenuButton>
+        <Tooltip
+          label="Pomodoro Timer GitHub"
+          hasArrow
+          placement="right"
+          shouldWrapChildren
+        >
+          <Link
+            href="https://github.com/monteiro-alexandre/pomodoro-timer"
+            isExternal
+          >
+            <Icon
+              as={FaGithub}
+              width="30px"
+              height="30px"
+              cursor="pointer"
+              _hover={{ color: '#0098f7' }}
+            />
+          </Link>
         </Tooltip>
       </MenuButton>
     </Flex>
