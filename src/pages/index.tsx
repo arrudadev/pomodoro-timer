@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   FaLaptop,
   FaHeadphones,
@@ -21,6 +21,34 @@ import {
 import Layout from '../components/Layout';
 
 const Home: React.FC = () => {
+  const timerTypes = {
+    pomodoro: {
+      time: 25,
+      color: 'blue.500',
+      type: 'pomodoro',
+    },
+    shortBreak: {
+      time: 5,
+      color: 'green.500',
+      type: 'shortBreak',
+    },
+    longBreak: {
+      time: 15,
+      color: 'yellow.500',
+      type: 'longBreak',
+    },
+  };
+
+  const [timerType, setTimerType] = useState(timerTypes.pomodoro);
+
+  const handleTimerTypeChange = (type: string) => {
+    setTimerType(timerTypes[type]);
+  };
+
+  useEffect(() => {
+    handleTimerTypeChange('pomodoro');
+  }, []);
+
   return (
     <>
       <Head>
@@ -45,22 +73,27 @@ const Home: React.FC = () => {
             <Button
               leftIcon={<FaLaptop />}
               variant="ghost"
-              color="blue.500"
+              color={timerType.type === 'pomodoro' ? 'blue.500' : 'gray.600'}
               _hover={{ color: 'blue.500' }}
+              onClick={() => handleTimerTypeChange('pomodoro')}
             >
               Pomodoro
             </Button>
             <Button
               leftIcon={<FaHeadphones />}
               variant="ghost"
+              color={timerType.type === 'shortBreak' ? 'green.500' : 'gray.600'}
               _hover={{ color: 'green.500' }}
+              onClick={() => handleTimerTypeChange('shortBreak')}
             >
               Short Break
             </Button>
             <Button
               leftIcon={<FaCoffee />}
               variant="ghost"
+              color={timerType.type === 'longBreak' ? 'yellow.500' : 'gray.600'}
               _hover={{ color: 'yellow.500' }}
+              onClick={() => handleTimerTypeChange('longBreak')}
             >
               Long Break
             </Button>
@@ -72,13 +105,15 @@ const Home: React.FC = () => {
               width={['100%', '100%', '50%']}
             >
               <CircularProgress
-                max={25}
-                value={25}
+                max={timerType.time}
+                value={timerType.time}
                 size="300px"
-                color="blue.500"
+                color={timerType.color}
                 thickness="2px"
               >
-                <CircularProgressLabel>25:00</CircularProgressLabel>
+                <CircularProgressLabel>
+                  {timerType.time}:00
+                </CircularProgressLabel>
               </CircularProgress>
             </Flex>
 
