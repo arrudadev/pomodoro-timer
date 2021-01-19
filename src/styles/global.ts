@@ -6,8 +6,8 @@ const global = {
     height: '100%',
     width: '100%',
 
-    backgroundColor: '#111d25',
-    color: '#a7abae',
+    backgroundColor: 'blue.800',
+    color: 'gray.600',
   },
 
   '*, button, input': {

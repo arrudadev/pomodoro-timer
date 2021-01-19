@@ -44,7 +44,7 @@ const Footer: React.FC = () => {
               width="30px"
               height="30px"
               cursor="pointer"
-              _hover={{ color: '#0098f7' }}
+              _hover={{ color: 'blue.500' }}
               title="Alexandre Monteiro GitHub"
             />
           </Link>
@@ -59,7 +59,7 @@ const Footer: React.FC = () => {
               width="30px"
               height="30px"
               cursor="pointer"
-              _hover={{ color: '#0098f7' }}
+              _hover={{ color: 'blue.500' }}
               title="Alexandre Monteiro Linkedin"
             />
           </Link>
@@ -74,7 +74,7 @@ const Footer: React.FC = () => {
               width="30px"
               height="30px"
               cursor="pointer"
-              _hover={{ color: '#0098f7' }}
+              _hover={{ color: 'blue.500' }}
               title="Alexandre Monteiro Twitter"
             />
           </Link>
@@ -89,7 +89,7 @@ const Footer: React.FC = () => {
               width="30px"
               height="30px"
               cursor="pointer"
-              _hover={{ color: '#0098f7' }}
+              _hover={{ color: 'blue.500' }}
               title="Alexandre Monteiro Gmail"
             />
           </Link>

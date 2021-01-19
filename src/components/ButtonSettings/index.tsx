@@ -18,7 +18,7 @@ const ButtonSettings: React.FC<ButtonSettingsProps> = ({ displayText }) => {
         as={MdSettings}
         width="30px"
         height="30px"
-        _hover={{ color: '#0098f7' }}
+        _hover={{ color: 'blue.500' }}
         onClick={onOpen}
       />
 

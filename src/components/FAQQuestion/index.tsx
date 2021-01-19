@@ -15,7 +15,7 @@ const FAQQeustion: React.FC<FAQQeustionProps> = ({ question, answer }) => {
       <Button
         width={['100%']}
         variant="outline"
-        color="#0098f7"
+        color="blue.500"
         onClick={onToggle}
         whiteSpace="normal"
         marginBottom="20px"
@@ -23,7 +23,7 @@ const FAQQeustion: React.FC<FAQQeustionProps> = ({ question, answer }) => {
         {question}
       </Button>
       <Collapse in={isOpen} animateOpacity>
-        <Box p="40px">{answer}</Box>
+        <Box p="10px">{answer}</Box>
       </Collapse>
     </>
   );

@@ -14,7 +14,7 @@ const Header: React.FC = () => {
       textAlign="left"
       padding="8px"
     >
-      <Heading as="h2" color="#e3e4e5">
+      <Heading as="h2" color="gray.500">
         Pomodoro Timer
       </Heading>
 

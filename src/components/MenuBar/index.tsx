@@ -25,7 +25,7 @@ const MenuBar: React.FC = () => {
 
       <MenuButton>
         <Tooltip label="Timer" hasArrow placement="right" shouldWrapChildren>
-          <Icon as={MdSchedule} width="30px" height="30px" color="#0098f7" />
+          <Icon as={MdSchedule} width="30px" height="30px" color="blue.500" />
         </Tooltip>
       </MenuButton>
 
@@ -56,7 +56,7 @@ const MenuBar: React.FC = () => {
               width="30px"
               height="30px"
               cursor="pointer"
-              _hover={{ color: '#0098f7' }}
+              _hover={{ color: 'blue.500' }}
             />
           </Link>
         </Tooltip>

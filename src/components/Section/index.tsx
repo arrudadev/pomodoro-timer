@@ -36,7 +36,7 @@ const Section: React.FC<SectionProps> = ({ title, subtitle, children }) => {
         >
           <Heading
             as="h3"
-            color="#007bc7"
+            color="blue.600"
             fontSize={['2.8rem', '2.8rem', '3.2rem']}
             fontWeight="700"
             position="relative"
@@ -46,7 +46,7 @@ const Section: React.FC<SectionProps> = ({ title, subtitle, children }) => {
 
           <Heading
             as="h4"
-            color="#e3e4e5"
+            color="gray.500"
             fontSize={['3rem', '4.2rem', '5rem']}
             fontWeight="700"
             zIndex={1}

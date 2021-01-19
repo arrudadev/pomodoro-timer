@@ -45,8 +45,8 @@ const Home: React.FC = () => {
             <Button
               leftIcon={<FaLaptop />}
               variant="ghost"
-              color="#0098f7"
-              _hover={{ color: '#0098f7' }}
+              color="blue.500"
+              _hover={{ color: 'blue.500' }}
             >
               Pomodoro
             </Button>
@@ -75,7 +75,7 @@ const Home: React.FC = () => {
                 max={25}
                 value={25}
                 size="300px"
-                color="#0098f7"
+                color="blue.500"
                 thickness="2px"
               >
                 <CircularProgressLabel>25:00</CircularProgressLabel>
@@ -100,7 +100,7 @@ const Home: React.FC = () => {
                 flexWrap="wrap"
                 marginTop="30px"
               >
-                <Button leftIcon={<FaPlay />} variant="ghost" color="#0098f7">
+                <Button leftIcon={<FaPlay />} variant="ghost" color="blue.500">
                   Start
                 </Button>
                 <Button leftIcon={<FaStop />} variant="ghost" color="red.500">
