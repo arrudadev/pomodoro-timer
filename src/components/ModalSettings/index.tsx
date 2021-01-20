@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 
 import {
   Modal,
@@ -19,27 +19,53 @@ import {
   Text,
 } from '@chakra-ui/react';
 
+import { SettingsContext } from '../../contexts/Settings';
+
 interface ModalSettingsProps {
   onClose: () => void;
   isOpen: boolean;
 }
 
 const ModalSettings: React.FC<ModalSettingsProps> = ({ onClose, isOpen }) => {
-  const [pomodoroInterval, setPomodoroInterval] = useState(25);
-  const [shortBreakInterval, setShortBreakInterval] = useState(5);
-  const [longBreakInterval, setLongBreakInterval] = useState(15);
-  const [pomodorosCircle, setPomodorosCircle] = useState(4);
+  const { settings, changeSettings } = useContext(SettingsContext);
+
+  const [pomodoroInterval, setPomodoroInterval] = useState(
+    settings.pomodoroInterval,
+  );
+
+  const [shortBreakInterval, setShortBreakInterval] = useState(
+    settings.shortBreakInterval,
+  );
+
+  const [longBreakInterval, setLongBreakInterval] = useState(
+    settings.longBreakInterval,
+  );
+
+  const [pomodoroSessions, setPomodoroSessions] = useState(
+    settings.pomodoroSessions,
+  );
 
   const handlePomodoroIntervalChange = value => setPomodoroInterval(value);
   const handleShortBreakIntervalChange = value => setShortBreakInterval(value);
   const handleLongBreakIntervalChange = value => setLongBreakInterval(value);
-  const handlePomodorosCircleChange = value => setPomodorosCircle(value);
+  const handlePomodoroSessionsChange = value => setPomodoroSessions(value);
 
   const handleRestoreDefault = () => {
     setPomodoroInterval(25);
     setShortBreakInterval(5);
     setLongBreakInterval(15);
-    setPomodorosCircle(4);
+    setPomodoroSessions(4);
+  };
+
+  const handleSaveSettings = () => {
+    changeSettings({
+      pomodoroInterval,
+      shortBreakInterval,
+      longBreakInterval,
+      pomodoroSessions,
+    });
+
+    onClose();
   };
 
   return (
@@ -120,12 +146,12 @@ const ModalSettings: React.FC<ModalSettingsProps> = ({ onClose, isOpen }) => {
           </FormControl>
 
           <FormControl mt={4}>
-            <FormLabel>Cliclos de Pomodoros</FormLabel>
+            <FormLabel>Sessões de Pomodoros</FormLabel>
             <Slider
-              value={pomodorosCircle}
+              value={pomodoroSessions}
               max={8}
               min={1}
-              onChange={handlePomodorosCircleChange}
+              onChange={handlePomodoroSessionsChange}
             >
               <SliderTrack>
                 <SliderFilledTrack />
@@ -133,14 +159,14 @@ const ModalSettings: React.FC<ModalSettingsProps> = ({ onClose, isOpen }) => {
               <SliderThumb
                 fontSize="sm"
                 boxSize="32px"
-                children={pomodorosCircle}
+                children={pomodoroSessions}
               />
             </Slider>
           </FormControl>
         </ModalBody>
 
         <ModalFooter>
-          <Button colorScheme="blue" mr={3}>
+          <Button colorScheme="blue" mr={3} onClick={handleSaveSettings}>
             Save
           </Button>
           <Button onClick={onClose}>Cancel</Button>

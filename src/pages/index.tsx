@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {
   FaLaptop,
   FaHeadphones,
@@ -19,24 +19,27 @@ import {
 } from '@chakra-ui/react';
 
 import Layout from '../components/Layout';
+import { SettingsContext } from '../contexts/Settings';
 import { useLocalStorageState } from '../hooks/useLocalStorageState';
 import convertMinutesInSeconds from '../utils/convertMinutesInSeconds';
 import formatTimer from '../utils/formatTimer';
 
 const Home: React.FC = () => {
+  const { settings } = useContext(SettingsContext);
+
   const timerTypes = {
     pomodoro: {
-      timeInSeconds: convertMinutesInSeconds(25),
+      timeInSeconds: convertMinutesInSeconds(settings.pomodoroInterval),
       color: 'blue.500',
       type: 'pomodoro',
     },
     shortBreak: {
-      timeInSeconds: convertMinutesInSeconds(5),
+      timeInSeconds: convertMinutesInSeconds(settings.shortBreakInterval),
       color: 'green.500',
       type: 'shortBreak',
     },
     longBreak: {
-      timeInSeconds: convertMinutesInSeconds(15),
+      timeInSeconds: convertMinutesInSeconds(settings.longBreakInterval),
       color: 'yellow.500',
       type: 'longBreak',
     },
@@ -44,9 +47,7 @@ const Home: React.FC = () => {
 
   const [timerType, setTimerType] = useState(timerTypes.pomodoro);
 
-  const [timeInSeconds, setTimeInSeconds] = useState(
-    timerTypes.pomodoro.timeInSeconds,
-  );
+  const [timeInSeconds, setTimeInSeconds] = useState(settings.pomodoroInterval);
 
   const [timerStarted, setTimerStarted] = useState(false);
 
@@ -77,6 +78,12 @@ const Home: React.FC = () => {
   useEffect(() => {
     handleTimerTypeChange('pomodoro');
   }, []);
+
+  useEffect(() => {
+    setTimerStarted(false);
+
+    handleTimerTypeChange(timerType.type);
+  }, [settings]);
 
   useEffect(() => {
     const interval = setInterval(() => {
