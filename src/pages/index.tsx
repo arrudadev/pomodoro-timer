@@ -19,21 +19,23 @@ import {
 } from '@chakra-ui/react';
 
 import Layout from '../components/Layout';
+import convertMinutesInSeconds from '../utils/convertMinutesInSeconds';
+import formatTimer from '../utils/formatTimer';
 
 const Home: React.FC = () => {
   const timerTypes = {
     pomodoro: {
-      time: 25,
+      timeInSeconds: convertMinutesInSeconds(25),
       color: 'blue.500',
       type: 'pomodoro',
     },
     shortBreak: {
-      time: 5,
+      timeInSeconds: convertMinutesInSeconds(5),
       color: 'green.500',
       type: 'shortBreak',
     },
     longBreak: {
-      time: 15,
+      timeInSeconds: convertMinutesInSeconds(15),
       color: 'yellow.500',
       type: 'longBreak',
     },
@@ -105,14 +107,14 @@ const Home: React.FC = () => {
               width={['100%', '100%', '50%']}
             >
               <CircularProgress
-                max={timerType.time}
-                value={timerType.time}
+                max={timerType.timeInSeconds}
+                value={timerType.timeInSeconds}
                 size="300px"
                 color={timerType.color}
                 thickness="2px"
               >
                 <CircularProgressLabel>
-                  {timerType.time}:00
+                  {formatTimer(timerType.timeInSeconds)}
                 </CircularProgressLabel>
               </CircularProgress>
             </Flex>
