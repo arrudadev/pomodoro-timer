@@ -68,6 +68,15 @@ const ModalSettings: React.FC<ModalSettingsProps> = ({ onClose, isOpen }) => {
     onClose();
   };
 
+  const handleCancelChanges = () => {
+    setPomodoroInterval(settings.pomodoroInterval);
+    setShortBreakInterval(settings.shortBreakInterval);
+    setLongBreakInterval(settings.longBreakInterval);
+    setPomodoroSessions(settings.pomodoroSessions);
+
+    onClose();
+  };
+
   return (
     <Modal
       isCentered
@@ -146,7 +155,7 @@ const ModalSettings: React.FC<ModalSettingsProps> = ({ onClose, isOpen }) => {
           </FormControl>
 
           <FormControl mt={4}>
-            <FormLabel>Sessões de Pomodoros</FormLabel>
+            <FormLabel>Sessões</FormLabel>
             <Slider
               value={pomodoroSessions}
               max={8}
@@ -169,7 +178,7 @@ const ModalSettings: React.FC<ModalSettingsProps> = ({ onClose, isOpen }) => {
           <Button colorScheme="blue" mr={3} onClick={handleSaveSettings}>
             Save
           </Button>
-          <Button onClick={onClose}>Cancel</Button>
+          <Button onClick={handleCancelChanges}>Cancel</Button>
         </ModalFooter>
       </ModalContent>
     </Modal>
