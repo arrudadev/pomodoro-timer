@@ -51,6 +51,8 @@ const Home: React.FC = () => {
 
   const [timerStarted, setTimerStarted] = useState(false);
 
+  const [pomodoroSession, setPomodoroSession] = useState(1);
+
   const [task, setTask] = useLocalStorageState('@pomodorTimer/currentTask', '');
 
   const handleTimerTypeChange = (type: string) => {
@@ -90,7 +92,6 @@ const Home: React.FC = () => {
       if (timerStarted) {
         setTimeInSeconds(seconds => {
           if (seconds === 0) {
-            setTimerStarted(false);
             return 0;
           }
 
@@ -102,6 +103,37 @@ const Home: React.FC = () => {
       clearInterval(interval);
     };
   }, [timerStarted]);
+
+  useEffect(() => {
+    if (timeInSeconds === 0) {
+      setTimerStarted(false);
+      if (pomodoroSession < settings.pomodoroSessions) {
+        setTimerType(timer => {
+          if (timer.type === 'pomodoro') {
+            setTimeInSeconds(timerTypes.shortBreak.timeInSeconds);
+
+            return timerTypes.shortBreak;
+          }
+          if (timer.type === 'shortBreak') {
+            setTimeInSeconds(timerTypes.pomodoro.timeInSeconds);
+            setPomodoroSession(session => session + 1);
+
+            return timerTypes.pomodoro;
+          }
+          if (timer.type === 'longBreak') {
+            setTimeInSeconds(timerTypes.pomodoro.timeInSeconds);
+            return timerTypes.pomodoro;
+          }
+
+          return timer;
+        });
+      } else {
+        setPomodoroSession(1);
+        setTimeInSeconds(timerTypes.longBreak.timeInSeconds);
+        setTimerType(timerTypes.longBreak);
+      }
+    }
+  }, [timeInSeconds]);
 
   return (
     <>
