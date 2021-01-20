@@ -25,12 +25,12 @@ import formatTimer from '../utils/formatTimer';
 const Home: React.FC = () => {
   const timerTypes = {
     pomodoro: {
-      timeInSeconds: convertMinutesInSeconds(25),
+      timeInSeconds: convertMinutesInSeconds(0.2),
       color: 'blue.500',
       type: 'pomodoro',
     },
     shortBreak: {
-      timeInSeconds: convertMinutesInSeconds(5),
+      timeInSeconds: convertMinutesInSeconds(0.1),
       color: 'green.500',
       type: 'shortBreak',
     },
@@ -43,13 +43,46 @@ const Home: React.FC = () => {
 
   const [timerType, setTimerType] = useState(timerTypes.pomodoro);
 
+  const [timeInSeconds, setTimeInSeconds] = useState(
+    timerTypes.pomodoro.timeInSeconds,
+  );
+
+  const [timerStarted, setTimerStarted] = useState(false);
+
   const handleTimerTypeChange = (type: string) => {
     setTimerType(timerTypes[type]);
+    setTimeInSeconds(timerTypes[type].timeInSeconds);
+  };
+
+  const handleTimerStart = () => {
+    setTimerStarted(true);
+  };
+
+  const handleTimerStop = () => {
+    setTimerStarted(false);
   };
 
   useEffect(() => {
     handleTimerTypeChange('pomodoro');
   }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (timerStarted) {
+        setTimeInSeconds(seconds => {
+          if (seconds === 0) {
+            setTimerStarted(false);
+            return 0;
+          }
+
+          return seconds - 1;
+        });
+      }
+    }, 1000);
+    return () => {
+      clearInterval(interval);
+    };
+  }, [timerStarted]);
 
   return (
     <>
@@ -108,13 +141,13 @@ const Home: React.FC = () => {
             >
               <CircularProgress
                 max={timerType.timeInSeconds}
-                value={timerType.timeInSeconds}
+                value={timeInSeconds}
                 size="300px"
                 color={timerType.color}
                 thickness="2px"
               >
                 <CircularProgressLabel>
-                  {formatTimer(timerType.timeInSeconds)}
+                  {formatTimer(timeInSeconds)}
                 </CircularProgressLabel>
               </CircularProgress>
             </Flex>
@@ -137,10 +170,20 @@ const Home: React.FC = () => {
                 flexWrap="wrap"
                 marginTop="30px"
               >
-                <Button leftIcon={<FaPlay />} variant="ghost" color="blue.500">
+                <Button
+                  leftIcon={<FaPlay />}
+                  variant="ghost"
+                  color="blue.500"
+                  onClick={handleTimerStart}
+                >
                   Start
                 </Button>
-                <Button leftIcon={<FaStop />} variant="ghost" color="red.500">
+                <Button
+                  leftIcon={<FaStop />}
+                  variant="ghost"
+                  color="red.500"
+                  onClick={handleTimerStop}
+                >
                   Stop
                 </Button>
                 <Button
