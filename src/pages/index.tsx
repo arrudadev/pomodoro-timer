@@ -25,12 +25,12 @@ import formatTimer from '../utils/formatTimer';
 const Home: React.FC = () => {
   const timerTypes = {
     pomodoro: {
-      timeInSeconds: convertMinutesInSeconds(0.2),
+      timeInSeconds: convertMinutesInSeconds(25),
       color: 'blue.500',
       type: 'pomodoro',
     },
     shortBreak: {
-      timeInSeconds: convertMinutesInSeconds(0.1),
+      timeInSeconds: convertMinutesInSeconds(5),
       color: 'green.500',
       type: 'shortBreak',
     },
@@ -60,6 +60,11 @@ const Home: React.FC = () => {
 
   const handleTimerStop = () => {
     setTimerStarted(false);
+  };
+
+  const handleTimerReset = () => {
+    setTimerStarted(false);
+    setTimeInSeconds(timerType.timeInSeconds);
   };
 
   useEffect(() => {
@@ -190,6 +195,7 @@ const Home: React.FC = () => {
                   leftIcon={<FaRedo />}
                   variant="ghost"
                   color="yellow.500"
+                  onClick={handleTimerReset}
                 >
                   Reset
                 </Button>
