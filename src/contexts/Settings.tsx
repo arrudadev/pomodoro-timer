@@ -9,6 +9,7 @@ interface Settings {
   shortBreakInterval: number;
   longBreakInterval: number;
   pomodoroSessions: number;
+  autoStartNextRound: boolean;
 }
 
 const SettingsProvider: React.FC = ({ children }) => {
@@ -19,6 +20,7 @@ const SettingsProvider: React.FC = ({ children }) => {
       shortBreakInterval: 5,
       longBreakInterval: 15,
       pomodoroSessions: 4,
+      autoStartNextRound: true,
     },
   );
 

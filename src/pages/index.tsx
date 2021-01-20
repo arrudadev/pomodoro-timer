@@ -106,7 +106,10 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     if (timeInSeconds === 0) {
-      setTimerStarted(false);
+      if (!settings.autoStartNextRound) {
+        setTimerStarted(false);
+      }
+
       if (pomodoroSession < settings.pomodoroSessions) {
         setTimerType(timer => {
           if (timer.type === 'pomodoro') {

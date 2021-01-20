@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { ChangeEvent, useContext, useState } from 'react';
 
 import {
   Modal,
@@ -17,6 +17,7 @@ import {
   SliderThumb,
   Flex,
   Text,
+  Switch,
 } from '@chakra-ui/react';
 
 import { SettingsContext } from '../../contexts/Settings';
@@ -45,16 +46,25 @@ const ModalSettings: React.FC<ModalSettingsProps> = ({ onClose, isOpen }) => {
     settings.pomodoroSessions,
   );
 
+  const [autoStartNextRound, setAutoStartNextRound] = useState(
+    settings.autoStartNextRound,
+  );
+
   const handlePomodoroIntervalChange = value => setPomodoroInterval(value);
   const handleShortBreakIntervalChange = value => setShortBreakInterval(value);
   const handleLongBreakIntervalChange = value => setLongBreakInterval(value);
   const handlePomodoroSessionsChange = value => setPomodoroSessions(value);
+
+  const handleAutoStartNextRound = (event: ChangeEvent<HTMLInputElement>) => {
+    setAutoStartNextRound(event.target.checked);
+  };
 
   const handleRestoreDefault = () => {
     setPomodoroInterval(25);
     setShortBreakInterval(5);
     setLongBreakInterval(15);
     setPomodoroSessions(4);
+    setAutoStartNextRound(true);
   };
 
   const handleSaveSettings = () => {
@@ -63,6 +73,7 @@ const ModalSettings: React.FC<ModalSettingsProps> = ({ onClose, isOpen }) => {
       shortBreakInterval,
       longBreakInterval,
       pomodoroSessions,
+      autoStartNextRound,
     });
 
     onClose();
@@ -73,6 +84,7 @@ const ModalSettings: React.FC<ModalSettingsProps> = ({ onClose, isOpen }) => {
     setShortBreakInterval(settings.shortBreakInterval);
     setLongBreakInterval(settings.longBreakInterval);
     setPomodoroSessions(settings.pomodoroSessions);
+    setAutoStartNextRound(settings.autoStartNextRound);
 
     onClose();
   };
@@ -172,6 +184,16 @@ const ModalSettings: React.FC<ModalSettingsProps> = ({ onClose, isOpen }) => {
               />
             </Slider>
           </FormControl>
+
+          <FormLabel htmlFor="auto-start-next-round" mt={4}>
+            Iniciar automáticamente a próxima rodada
+          </FormLabel>
+          <Switch
+            id="auto-start-next-round"
+            size="lg"
+            isChecked={autoStartNextRound}
+            onChange={handleAutoStartNextRound}
+          />
         </ModalBody>
 
         <ModalFooter>
