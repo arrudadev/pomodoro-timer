@@ -19,6 +19,7 @@ import {
 } from '@chakra-ui/react';
 
 import Layout from '../components/Layout';
+import { useLocalStorageState } from '../hooks/useLocalStorageState';
 import convertMinutesInSeconds from '../utils/convertMinutesInSeconds';
 import formatTimer from '../utils/formatTimer';
 
@@ -49,6 +50,8 @@ const Home: React.FC = () => {
 
   const [timerStarted, setTimerStarted] = useState(false);
 
+  const [task, setTask] = useLocalStorageState('@pomodorTimer/currentTask', '');
+
   const handleTimerTypeChange = (type: string) => {
     setTimerType(timerTypes[type]);
     setTimeInSeconds(timerTypes[type].timeInSeconds);
@@ -65,6 +68,10 @@ const Home: React.FC = () => {
   const handleTimerReset = () => {
     setTimerStarted(false);
     setTimeInSeconds(timerType.timeInSeconds);
+  };
+
+  const handleChangeTask = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setTask(event.target.value);
   };
 
   useEffect(() => {
@@ -167,6 +174,8 @@ const Home: React.FC = () => {
                 variant="outline"
                 placeholder="Digite uma Tarefa"
                 maxWidth="450px"
+                value={task}
+                onChange={handleChangeTask}
               />
 
               <Flex
