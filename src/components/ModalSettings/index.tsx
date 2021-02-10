@@ -129,7 +129,7 @@ const ModalSettings: React.FC<ModalSettingsProps> = ({ onClose, isOpen }) => {
           </FormControl>
 
           <FormControl mt={4}>
-            <FormLabel>Pausa curta</FormLabel>
+            <FormLabel>Pausa Curta</FormLabel>
             <Slider
               value={shortBreakInterval}
               max={15}

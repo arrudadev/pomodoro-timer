@@ -25,7 +25,7 @@ const Footer: React.FC = () => {
         </Box>
 
         <Text marginBottom="10px">
-          Developed and Maintained by Alexandre Monteiro
+          Desenvolvido e mantido por Alexandre Monteiro
         </Text>
 
         <Flex

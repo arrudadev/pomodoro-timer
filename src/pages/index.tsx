@@ -8,8 +8,6 @@ import {
   FaRedo,
 } from 'react-icons/fa';
 
-import Head from 'next/head';
-
 import {
   Flex,
   CircularProgress,
@@ -19,6 +17,7 @@ import {
 } from '@chakra-ui/react';
 
 import Layout from '../components/Layout';
+import SEO from '../components/SEO';
 import { SettingsContext } from '../contexts/Settings';
 import { useLocalStorageState } from '../hooks/useLocalStorageState';
 import convertMinutesInSeconds from '../utils/convertMinutesInSeconds';
@@ -53,6 +52,8 @@ const Home: React.FC = () => {
 
   const [pomodoroSession, setPomodoroSession] = useState(1);
 
+  const [titleCounter, setTitleCounter] = useState('');
+
   const [task, setTask] = useLocalStorageState('@pomodorTimer/currentTask', '');
 
   const handleTimerTypeChange = (type: string) => {
@@ -71,6 +72,7 @@ const Home: React.FC = () => {
   const handleTimerReset = () => {
     setTimerStarted(false);
     setTimeInSeconds(timerType.timeInSeconds);
+    setTitleCounter('');
   };
 
   const handleChangeTask = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -91,11 +93,17 @@ const Home: React.FC = () => {
     const interval = setInterval(() => {
       if (timerStarted) {
         setTimeInSeconds(seconds => {
+          let newSeconds = 0;
+
           if (seconds === 0) {
-            return 0;
+            newSeconds = 0;
+          } else {
+            newSeconds = seconds - 1;
           }
 
-          return seconds - 1;
+          setTitleCounter(formatTimer(newSeconds));
+
+          return newSeconds;
         });
       }
     }, 1000);
@@ -140,10 +148,7 @@ const Home: React.FC = () => {
 
   return (
     <>
-      <Head>
-        <title>Pomodoro Timer</title>
-        <link rel="icon" href="/favicon.png" />
-      </Head>
+      <SEO titleCounter={titleCounter} />
 
       <Layout>
         <Flex
@@ -175,7 +180,7 @@ const Home: React.FC = () => {
               _hover={{ color: 'green.500' }}
               onClick={() => handleTimerTypeChange('shortBreak')}
             >
-              Short Break
+              Pausa Curta
             </Button>
             <Button
               leftIcon={<FaCoffee />}
@@ -184,7 +189,7 @@ const Home: React.FC = () => {
               _hover={{ color: 'yellow.500' }}
               onClick={() => handleTimerTypeChange('longBreak')}
             >
-              Long Break
+              Pausa Longa
             </Button>
           </Flex>
           <Flex width="80%" flexWrap="wrap">
