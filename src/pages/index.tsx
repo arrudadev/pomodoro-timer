@@ -15,11 +15,13 @@ import {
   Button,
   Input,
 } from '@chakra-ui/react';
+import useSound from 'use-sound';
 
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 import { SettingsContext } from '../contexts/Settings';
 import { useLocalStorageState } from '../hooks/useLocalStorageState';
+import defaultSound from '../sounds/default.mp3';
 import convertMinutesInSeconds from '../utils/convertMinutesInSeconds';
 import formatTimer from '../utils/formatTimer';
 
@@ -55,6 +57,8 @@ const Home: React.FC = () => {
   const [titleCounter, setTitleCounter] = useState('');
 
   const [task, setTask] = useLocalStorageState('@pomodorTimer/currentTask', '');
+
+  const [playSound] = useSound(defaultSound);
 
   const handleTimerTypeChange = (type: string) => {
     setTimerType(timerTypes[type]);
@@ -114,6 +118,8 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     if (timeInSeconds === 0) {
+      playSound();
+
       if (!settings.autoStartNextRound) {
         setTimerStarted(false);
       }
