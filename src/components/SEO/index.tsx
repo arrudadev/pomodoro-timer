@@ -57,6 +57,11 @@ const SEO: React.FC<SEOProps> = ({ titleCounter }) => {
       <meta name="twitter:image:alt" content="Thumbnail" />
       <meta name="twitter:image:width" content="1200" />
       <meta name="twitter:image:height" content="620" />
+
+      <meta
+        name="google-site-verification"
+        content="7DnGvprwPQLe7--JUrn9234cRG2WJT6CDLqoDzvi3PA"
+      />
     </Head>
   );
 };
