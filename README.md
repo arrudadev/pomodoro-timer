@@ -4,7 +4,7 @@
 
 > PomodoroTimer is a flexible and easy-to-use online Pomodoro technique timer that will help you manage your time and allow you to focus on any task, such as studying, writing or programming.
 
-<p>Pomodoro Timer Deployed <a href="">here</a>.</p>
+<p>Pomodoro Timer Deployed <a href="https://pomodorotimer.com.br/">here</a>.</p>
 
 <img src="https://github.com/monteiro-alexandre/pomodoro-timer/blob/master/.github/assets/pomodoro-timer.png" alt="Pomodoro Timer" width="100%"/>
 
@@ -58,7 +58,7 @@ To view the project you can open [localhost:3000](http://localhost:3000).
 
 # :bug: Issues
 
-Feel free to **file a new issue** with a respective title and description on the the [issues](https://github.com/monteiro-alexandre/pomodoro-timer/issues) repository. If you already found a solution to your problem, **I would love to review your pull request**! Have a look at our [contribution guidelines](https://github.com/monteiro-alexandre/pomodoro-timer/blob/master/CONTRIBUTING.md) to find out about the coding standards.
+Feel free to **file a new issue** with a respective title and description on the the [Pomodoro Timer](https://github.com/monteiro-alexandre/pomodoro-timer/issues) repository. If you already found a solution to your problem, **I would love to review your pull request**! Have a look at our [contribution guidelines](https://github.com/monteiro-alexandre/pomodoro-timer/blob/master/CONTRIBUTING.md) to find out about the coding standards.
 
 # :tada: Contributing
 

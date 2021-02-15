@@ -12,7 +12,7 @@ const SEO: React.FC<SEOProps> = ({ titleCounter }) => {
     : 'Pomodoro Timer';
 
   const pageDescription =
-    'PomodoroTimer é um temporizador de técnica Pomodoro online flexível e fácil de usar, que vai te ajudar a administrar seu tempo e permitirá que você se concentre em qualquer tarefa, como estudar, escrever ou programar.';
+    'Pomodoro Timer é um temporizador de técnica Pomodoro online flexível e fácil de usar, que vai te ajudar a administrar seu tempo e permitirá que você se concentre em qualquer tarefa, como estudar, escrever ou programar.';
 
   const pageImage = `https://pomodorotimer.com.br/pomodoro-timer-preview.png`;
 
