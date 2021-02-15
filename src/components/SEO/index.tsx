@@ -36,17 +36,17 @@ const SEO: React.FC<SEOProps> = ({ titleCounter }) => {
       <meta name="referrer" content="no-referrer-when-downgrade" />
       <meta name="google" content="notranslate" />
 
+      <meta property="og:url" content="https://pomodorotimer.com.br" />
       <meta property="og:title" content={pageTitle} />
       <meta property="og:description" content={pageDescription} />
       <meta property="og:locale" content="pt_BR" />
       <meta property="og:type" content="website" />
       <meta property="og:site_name" content={pageTitle} />
       <meta property="og:image" content={pageImage} />
-      <meta property="og:image:secure_url" content={pageImage} />
       <meta property="og:image:alt" content="Thumbnail" />
       <meta property="og:image:type" content="image/png" />
-      <meta property="og:image:width" content="1200" />
-      <meta property="og:image:height" content="630" />
+      <meta property="og:image:width" content="800" />
+      <meta property="og:image:height" content="600" />
 
       <meta name="twitter:title" content={pageTitle} />
       <meta name="twitter:card" content="summary_large_image" />
@@ -55,8 +55,8 @@ const SEO: React.FC<SEOProps> = ({ titleCounter }) => {
       <meta name="twitter:image" content={pageImage} />
       <meta name="twitter:image:src" content={pageImage} />
       <meta name="twitter:image:alt" content="Thumbnail" />
-      <meta name="twitter:image:width" content="1200" />
-      <meta name="twitter:image:height" content="620" />
+      <meta name="twitter:image:width" content="800" />
+      <meta name="twitter:image:height" content="600" />
 
       <meta
         name="google-site-verification"
